@@ -1,12 +1,10 @@
 package offline.coding.evaluation.falabella.dto;
 
-import org.hibernate.validator.internal.engine.ConstraintViolationImpl;
 import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
-import javax.validation.constraints.*;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,13 +41,7 @@ public class ProductDtoTest {
 
     @Test
     public void returnEmptyViolationsWhenProductDtoHasCorrectValuesInFields() {
-        ProductDto productDto = ProductDto.builder()
-                .SKU("XXXXXX")
-                .name("DUMMY")
-                .brand("DUMMY")
-                .price(10.0f)
-                .size("S")
-                .principalImage("DUMMY").build();
+        ProductDto productDto = ProductDtoMock.getCorrect();
         Set<ConstraintViolation<ProductDto>> violations = validator.validate(productDto);
         assertTrue(violations.isEmpty());
     }

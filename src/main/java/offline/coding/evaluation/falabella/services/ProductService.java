@@ -42,7 +42,8 @@ public class ProductService {
     }
 
     public void update(ProductDto product) throws DoNotExistsException {
-        findBySku(product.getSKU());
+        if(!productRepository.findById(product.getSKU()).isPresent())
+            throw new DoNotExistsException(String.format(PRODUCT_DO_NOT_EXISTS_MESSAGE, product.getSKU()));
         productRepository.save(productMapper.productDtoToProductEntity(product));
     }
 
