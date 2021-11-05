@@ -1,9 +1,6 @@
 package offline.coding.evaluation.falabella.dto;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.validation.constraints.*;
 import java.util.List;
@@ -11,6 +8,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@Builder
 @EqualsAndHashCode
 public class ProductDto {
     @NotNull(message = "SKU is required")

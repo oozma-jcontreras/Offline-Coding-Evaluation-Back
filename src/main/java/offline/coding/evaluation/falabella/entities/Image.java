@@ -20,4 +20,6 @@ public class Image {
     private int imageId;
     @Column(length = 500)
     private String image;
+    @ManyToOne
+    private Product product;
 }
